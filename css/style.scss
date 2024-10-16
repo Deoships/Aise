@@ -1,0 +1,551 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet');
+* {
+  margin: 0;
+  padding: 0;
+}
+/* --- Шрифты ---*/
+h1 {
+  font-size: 36px;
+}
+h2 {
+  font-size: 22px;
+}
+p,a {
+  font-size: 14px;
+  text-decoration: none;
+  text-align: justify;
+}
+h1, h2, p, a, button {
+  text-transform: uppercase;
+  font-family: "Montserrat";
+  font-weight:600;
+  color: #222;
+  line-height: 200%;
+}
+/* --- Шрифты ---*/
+/* --- Кнопки ---*/
+button {
+  padding: 10px 20px;
+  background: #425E72;
+  color: #fff;
+  border: 0;
+}
+button :hover{
+  background: #fff;
+  color: #222;
+  border:1px #222 solid;
+}
+/* --- Кнопки ---*/
+.hr-1{
+  border: 1px solid #222222;
+  width: 242px;
+}
+.hr-2{
+  border: 1px solid #222222;
+  height: 242px;
+  width: 0px;
+}
+/* --- Шапка ---*/
+header {
+  &> nav >ul{ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  padding: 30px 90px 200px 90px;
+    &>li{
+      margin-left: 30%;
+      margin-right: 30%;
+    }
+    &>div>a:nth-child(1),a:nth-child(2),a:nth-child(3){
+      margin-right: 55px;
+    }
+    &>button{
+      background: none;
+      border: none;
+    }
+  } 
+}
+/* --- Шапка ---*/
+/* --- Контент ---*/
+.container {
+  max-width: 1740px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 200px;
+}
+footer {
+  display: flex;
+  align-items: center;
+  background: url(../img/footer-back.svg) ; 
+  height: 484px;
+  width: 100%;
+  &>div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1600px;
+    width: 100%;
+    margin: 0 auto;
+    &>div{
+      display: flex;
+      flex-direction: column;
+      &>a,p,h2{
+        color: #fff;
+        margin-bottom: 20px;
+      }
+    }
+    &>div:nth-child(3){
+      &>a,p{
+        text-align: right;
+      }  
+    }
+  }  
+}
+.big-home{
+  display: flex;
+  align-items: center;
+  &>h1{
+    width: 362px;
+  }
+}
+.plus{
+  display: flex;
+  width: 1440px;
+  justify-content: space-between; 
+  &>div{
+    display: flex;
+    align-items: center;
+    margin-right: 80px;
+    &>div{
+      margin-left: 20px;
+      &>h2{
+        padding-bottom: 20px;
+      }
+    }
+  }
+  &>div:nth-child(3){
+    &>div,h2,p{
+      width: 330px;
+    }
+  }
+}
+.block{
+  display: flex;
+  &>div{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 420px;
+    padding-right: 240px;
+    padding-left: 240px;
+    &>h2{
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    &>p{
+      margin-top: 20px;
+      width: 420px
+    }
+    &>a{
+      padding: 10px 20px;
+      background: #425E72;
+      color: #fff;
+      margin-top: 20px;
+      
+    }
+    &>a:hover{
+      background: #fff;
+      color: #222;
+      border:1px #222 solid;
+      padding: 9px 19px;
+    }
+    &>div{
+      margin-top: 20px;
+      &>div{
+        display: flex;
+        margin-bottom: 10px;
+        align-items: center;
+        &>p{
+          width: 340px;
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+}
+.modal {
+  position: absolute;
+  z-index: 2; /* 1 */
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+}
+.modal.is-visible {
+  visibility: visible;
+}
+.modal-overlay {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: hsla(0, 0%, 0%, 0.5);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.3s, opacity 0.3s;
+}
+.modal.is-visible .modal-overlay {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+.modal-wrapper {
+  position: absolute;
+  z-index: 3;
+  top: 6em;
+  margin-left: 40%;
+  background-color: #fff;
+  box-shadow: 0 0 1.5em hsla(0, 0%, 0%, 0.35);
+}
+#content-1,#content-2{
+  margin-top: 40px;
+  &>form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    &>h2{
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    &>hr{
+      margin-bottom: 20px;
+    }
+    &>input{
+      width: 250px;
+      height: 50px;
+      margin-bottom: 20px; 
+      border: 1px solid #222;
+      padding-left: 10px;
+      color: #222;
+      
+      &>select{
+        border: 2px solid #fff;
+        width: 500px;
+        height: 40px;
+      }
+    }
+    &>div>fieldset{
+      width: 236px;
+      &>input{
+        width: 150px;
+      }
+    }
+  }
+}
+.tabs {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  &>label{
+    vertical-align: middle;
+    height: 48px;
+    text-align: center;
+    &>p{
+      padding: 10px;
+      text-align: center;
+    }
+  }
+}
+#button-pop:hover{
+  background: #fff;
+  color: #222;
+  border:1px #222 solid;
+  height: 46px;
+}
+.zabil{
+  color: #425E72;
+}
+.tabs>input[type="radio"] {
+  display: none;
+}
+.ili{
+  margin-top: 20px;
+}
+.tabs>div {
+  /* скрыть контент по умолчанию */
+  display: none;
+}
+/* отобразить контент, связанный с вабранной радиокнопкой (input type="radio") */
+#tab-btn-1:checked~#content-1,
+#tab-btn-2:checked~#content-2{
+  display: block;
+}
+.tabs>label {
+  display: inline-block;
+  text-align: center;
+  line-height: 1.5;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+  cursor: pointer;
+  background: #fff;
+  width: 200px;
+  height: 48px;
+  border: 1px #222 solid;
+}
+.tabs>label:nth-child(4){
+  margin-left: -8px;
+}
+.tabs>input[type="radio"]:checked+label {
+  background:  #425E72;
+  border: 1px #425E72 solid;
+  &>p{
+    color: #fff;
+  }
+}
+.tabes {
+	display: flex;
+	flex-wrap: wrap; 
+  justify-content: center;
+  align-items: center;
+  &>div{
+    display: flex;
+    flex-direction: column;
+    &>div{
+      display: flex;
+      align-items: center;
+      height: 195px;
+      margin-bottom: 74px;
+      &>img{
+        width: 420px;
+        height: 195px;
+      }
+      &>hr{
+        height: 186px;
+      }
+      &>*{
+        margin-right: 20px;
+      }
+     &>a{
+        background: #425E72;
+        color: #fff;
+        border: 0;
+        cursor: pointer;
+        width: 137px;
+        height: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      &>a:hover{
+        background: #fff;
+        color: #222;
+        border:1px #222 solid;
+        height: 46px;
+        width: 135px;
+      }
+    }
+  }
+}
+.tabes label {
+	order: 1; // Put the labels first
+	display: block;
+	padding: 1rem 2rem;
+	margin-right: 0.2rem;
+	cursor: pointer;
+  background: #425E72;
+  font-weight: bold;
+  transition: background ease 0.2s;
+  &>h1{
+    color: #fff;
+  }
+}
+.tabes .tab {
+  order: 99; // Put the tabs last
+  flex-grow: 1;
+	display: none;
+  margin-top: 74px;
+  background: #fff;
+  
+}
+.tabes input[type="radio"] {
+	display: none;
+}
+.tabes input[type="radio"]:checked + label {
+	background: #fff;
+  border:1px #222 solid;
+  &>h1{
+    color: #222;
+  }
+}
+#button-pop{
+  display: flex;
+  background: #425E72;
+  border: 0;
+  cursor: pointer;
+  width: 265px;
+  height: 48px;
+  margin-bottom: 40px;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.tabes input[type="radio"]:checked + label + .tab {
+	display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#kartochka{
+  width: 640px;
+  padding-left: 0;
+  &>p{  
+    width: 640px;
+  }
+  &>div>button{
+    margin-right: 20px;
+  }
+  &>div>button:hover{
+    background: #fff;
+    color: #222;
+    border:1px #222 solid;
+    padding: 9px 19px;
+    cursor: pointer;
+  }
+}
+@media (min-width: 481px) and (max-width: 1487px) {
+
+  .big-home>img{
+    display: none;
+  }
+  .plus{
+    flex-direction: column;
+    margin-left: 20%;
+
+    &>div{
+      margin-top: 20px;
+    }
+  }
+  .block{
+    &>div{
+      padding: 0;
+    }
+    &>img{
+      display: none;
+    }
+  }
+  .container>img{
+    display: none;
+  }
+  footer>div{ 
+    padding: 20px;
+  }
+  .modal-wrapper{
+    margin-left: 25%;
+  }
+  .tab>div>img{
+    display: none;
+  }
+  .tab>div>hr{
+    display: none;
+  }
+}
+@media (max-width: 480px){
+  
+  header>nav>ul{
+    
+    &>li{
+      margin: 0;
+      display: none;
+    }
+  }
+  .big-home>img{
+    display: none;
+  }
+  .plus{
+    flex-direction: column;
+    
+    &>div{
+      margin-top: 40px;
+      margin-right: 0;
+      &>img,hr{
+        display: none;
+      }
+    }
+  }
+  .block{
+    &>div{
+      padding: 0;
+    }
+    &>img{
+      display: none;
+    }
+  }
+  .container>img{
+    display: none;
+  }
+  footer>div{ 
+    padding: 20px;
+    &>a{
+      display: none;
+    }
+  }
+  .modal-wrapper{
+    margin-left: 8%;
+  }
+  .tab>div>img{
+    display: none;
+  }
+  .tab>div{
+    flex-wrap: wrap;
+      hr{
+      display: none;
+    }
+  }
+}
+
+
+
+// error on register
+.error-main{
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+
+}
+.errors{
+  background-color: #222;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  z-index: 100;
+}
+
+.cart {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background-color: #364364;
+  transition: 0.1s;
+  cursor: pointer;
+  position: fixed; /* Фиксированное расположение */
+  top: 50px; /* в правом верхнем углу */
+  right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: contain;
+  padding: 15px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+ 
+}
+
